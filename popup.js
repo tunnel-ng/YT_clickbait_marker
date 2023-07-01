@@ -1,0 +1,7 @@
+document.getElementById('actionButton').addEventListener('click', () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'markClickbait' }, (response) => {
+      console.log(response.message);
+    });
+  });
+});
